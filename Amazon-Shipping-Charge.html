@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Amazon Shipping Calculator</title>
+
+  <style>
+
+    /* ==========================
+       PAGE STYLING
+    ========================== */
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+
+      text-align: center;
+
+      margin-top: 60px;
+    }
+
+
+    /* ==========================
+       MAIN CONTAINER
+    ========================== */
+
+    .box {
+
+      background: white;
+
+      display: inline-block;
+
+      width: 320px;
+
+      padding: 25px;
+
+      border-radius: 10px;
+
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* ==========================
+       AMAZON LOGO
+    ========================== */
+
+    .logo {
+
+      width: 120px;
+
+      margin-bottom: 15px;
+    }
+
+
+    /* ==========================
+       INPUT FIELD
+    ========================== */
+
+    input {
+
+      width: 80%;
+
+      padding: 10px;
+
+      margin-top: 10px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 5px;
+    }
+
+
+    /* ==========================
+       BUTTON STYLING
+    ========================== */
+
+    button {
+
+      margin-top: 15px;
+
+      padding: 10px 20px;
+
+      background: #ffd814;
+
+      border: none;
+
+      border-radius: 20px;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+
+      background: #f7ca00;
+    }
+
+
+    /* ==========================
+       RESULT TEXT
+    ========================== */
+
+    #result {
+
+      margin-top: 15px;
+
+      font-weight: bold;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+  <!-- ==========================
+       SHIPPING CALCULATOR CARD
+  ========================== -->
+
+  <div class="box">
+
+
+    <!-- ==========================
+         AMAZON LOGO
+    ========================== -->
+
+    <img
+      class="logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+      alt="Amazon Logo"
+    >
+
+
+    <!-- ==========================
+         PAGE TITLE
+    ========================== -->
+
+    <h2>
+      Amazon Shipping Calculator
+    </h2>
+
+
+    <!-- ==========================
+         SHIPPING RULES
+    ========================== -->
+
+    <p>
+      Orders under $40 = +$10 shipping.
+    </p>
+
+    <p>
+      Orders over $40 = FREE shipping.
+    </p>
+
+
+    <!-- ==========================
+         COST INPUT
+    ========================== -->
+
+    <input
+      type="number"
+      id="costInput"
+      placeholder="Cost of order"
+    >
+
+    <br>
+
+
+    <!-- ==========================
+         CALCULATE BUTTON
+    ========================== -->
+
+    <button onclick="calculateTotal()">
+
+      Calculate
+
+    </button>
+
+
+    <!-- ==========================
+         RESULT DISPLAY
+    ========================== -->
+
+    <p id="result"></p>
+
+  </div>
+
+
+  <script>
+
+    /* ==========================
+       MAIN FUNCTION
+       Runs when button is clicked
+    ========================== */
+
+    function calculateTotal() {
+
+
+      /* --------------------------
+         GET INPUT VALUE
+      -------------------------- */
+
+      const cost =
+        Number(
+          document.getElementById('costInput').value
+        );
+
+
+      /* --------------------------
+         STORE FINAL COST
+      -------------------------- */
+
+      let totalCost = 0;
+
+
+      /* --------------------------
+         SHIPPING LOGIC
+
+         Under $40  -> Add $10
+         $40 or More -> Free
+      -------------------------- */
+
+      if (cost < 40) {
+
+        totalCost = cost + 10;
+
+      } else {
+
+        totalCost = cost;
+      }
+
+
+      /* --------------------------
+         DISPLAY RESULT
+      -------------------------- */
+
+      document.getElementById('result').textContent =
+        `Total Cost: $${totalCost}`;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
