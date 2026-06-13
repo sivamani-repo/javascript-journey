@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Rock Paper Scissors</title>
+
+  <style>
+
+    /* ==========================
+       PAGE STYLING
+    ========================== */
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    /* ==========================
+       GAME BUTTONS
+    ========================== */
+
+    .move-btn {
+      width: 120px;
+      height: 120px;
+
+      border: 3px solid white;
+      border-radius: 60px;
+
+      background: transparent;
+
+      font-size: 50px;
+      cursor: pointer;
+
+      margin-right: 10px;
+    }
+
+    /* ==========================
+       RESULT TEXT
+    ========================== */
+
+    .result {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ==========================
+       HEADING
+  ========================== -->
+
+  <h1>Rock Paper Scissors</h1>
+
+
+  <!-- ==========================
+       GAME BUTTONS
+  ========================== -->
+
+  <button
+    class="move-btn"
+    onclick="playGame('rock')">
+    ✊
+  </button>
+
+  <button
+    class="move-btn"
+    onclick="playGame('paper')">
+    ✋
+  </button>
+
+  <button
+    class="move-btn"
+    onclick="playGame('scissors')">
+    ✌️
+  </button>
+
+
+  <!-- ==========================
+       RESULT AREA
+  ========================== -->
+
+  <p class="result js-result"></p>
+
+  <p class="js-moves"></p>
+
+  <p class="js-score"></p>
+
+
+  <!-- ==========================
+       RESET BUTTON
+  ========================== -->
+
+  <button onclick="resetScore()">
+    Reset Score
+  </button>
+
+
+  <script>
+
+    /* ==========================
+       SCORE OBJECT
+    ========================== */
+
+    let score = {
+      wins: 0,
+      losses: 0,
+      ties: 0
+    };
+
+
+    /* ==========================
+       INITIAL PAGE LOAD
+    ========================== */
+
+    updateScore();
+
+
+    /* ==========================
+       MAIN GAME FUNCTION
+    ========================== */
+
+    function playGame(playerMove) {
+
+      let computerMove = pickComputerMove();
+
+      let result = '';
+
+
+      /* --------------------------
+         ROCK LOGIC
+      -------------------------- */
+
+      if (playerMove === 'rock') {
+
+        if (computerMove === 'rock') {
+          result = 'Tie';
+
+        } else if (computerMove === 'paper') {
+          result = 'You Lose';
+
+        } else {
+          result = 'You Win';
+        }
+      }
+
+
+      /* --------------------------
+         PAPER LOGIC
+      -------------------------- */
+
+      if (playerMove === 'paper') {
+
+        if (computerMove === 'rock') {
+          result = 'You Win';
+
+        } else if (computerMove === 'paper') {
+          result = 'Tie';
+
+        } else {
+          result = 'You Lose';
+        }
+      }
+
+
+      /* --------------------------
+         SCISSORS LOGIC
+      -------------------------- */
+
+      if (playerMove === 'scissors') {
+
+        if (computerMove === 'rock') {
+          result = 'You Lose';
+
+        } else if (computerMove === 'paper') {
+          result = 'You Win';
+
+        } else {
+          result = 'Tie';
+        }
+      }
+
+
+      /* --------------------------
+         UPDATE SCORE
+      -------------------------- */
+
+      if (result === 'You Win') {
+
+        score.wins++;
+
+      } else if (result === 'You Lose') {
+
+        score.losses++;
+
+      } else {
+
+        score.ties++;
+      }
+
+
+      /* --------------------------
+         SHOW RESULT
+      -------------------------- */
+
+      document.querySelector('.js-result').innerHTML =
+        result;
+
+
+      /* --------------------------
+         SHOW MOVES
+      -------------------------- */
+
+      document.querySelector('.js-moves').innerHTML =
+        `You: ${playerMove}
+         | Computer: ${computerMove}`;
+
+
+      /* --------------------------
+         REFRESH SCORE DISPLAY
+      -------------------------- */
+
+      updateScore();
+    }
+
+
+    /* ==========================
+       COMPUTER MOVE GENERATOR
+    ========================== */
+
+    function pickComputerMove() {
+
+      let random = Math.random();
+
+      if (random < 1 / 3) {
+
+        return 'rock';
+
+      } else if (random < 2 / 3) {
+
+        return 'paper';
+
+      } else {
+
+        return 'scissors';
+      }
+    }
+
+
+    /* ==========================
+       UPDATE SCORE DISPLAY
+    ========================== */
+
+    function updateScore() {
+
+      document.querySelector('.js-score').innerHTML =
+        `Wins: ${score.wins},
+         Losses: ${score.losses},
+         Ties: ${score.ties}`;
+    }
+
+
+    /* ==========================
+       RESET SCORE
+    ========================== */
+
+    function resetScore() {
+
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+
+      updateScore();
+    }
+
+  </script>
+
+</body>
+
+</html>
