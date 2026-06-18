@@ -1,0 +1,253 @@
+# 🖱️ Mouse Click Counter
+
+## 📖 What is this?
+
+Mouse Click Counter is a simple web application that tracks and displays the number of mouse clicks.
+
+Users can:
+
+- Increase the counter by 1
+- Decrease the counter by 1
+- Reset the counter to 0
+
+This project is built using **HTML**, **CSS**, and **JavaScript** and is a great beginner-friendly project for learning frontend web development.
+
+---
+
+## 🎯 Why is it Useful?
+
+This project helps beginners understand:
+
+- HTML page structure
+- CSS styling and layouts
+- JavaScript fundamentals
+- DOM Manipulation
+- Event Handling
+- Dynamic content updates
+
+It is one of the best starter projects for learning how JavaScript interacts with web pages.
+
+---
+
+## ✨ Features
+
+✔ Increase Counter (+1)
+
+✔ Decrease Counter (-1)
+
+✔ Reset Counter
+
+✔ Clean and Modern UI
+
+✔ Responsive Layout
+
+✔ Beginner-Friendly Code
+
+---
+
+## 💻 Complete Source Code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mouse Click Counter</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background-color:#f4f6f9;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            height:100vh;
+        }
+
+        .container{
+            text-align:center;
+        }
+
+        h1{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        #countLabel{
+            font-size:6rem;
+            font-weight:bold;
+            color:#222;
+
+            margin-bottom:20px;
+        }
+
+        #btnContainer{
+            display:flex;
+            gap:15px;
+            justify-content:center;
+        }
+
+        .btn{
+            padding:12px 24px;
+            font-size:1.2rem;
+
+            border:none;
+            border-radius:8px;
+
+            cursor:pointer;
+
+            color:white;
+
+            transition:0.2s ease-in-out;
+        }
+
+        .increase{
+            background-color:#2ecc71;
+        }
+
+        .decrease{
+            background-color:#e74c3c;
+        }
+
+        .reset{
+            background-color:#7f8c8d;
+        }
+
+        .btn:hover{
+            transform:scale(1.05);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Mouse Click Counter</h1>
+
+        <div id="countLabel">0</div>
+
+        <div id="btnContainer">
+
+            <button
+                class="btn decrease"
+                id="decreaseBtn">
+                -1
+            </button>
+
+            <button
+                class="btn reset"
+                id="resetBtn">
+                Reset
+            </button>
+
+            <button
+                class="btn increase"
+                id="increaseBtn">
+                +1
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const decreaseBtn =
+            document.getElementById("decreaseBtn");
+
+        const resetBtn =
+            document.getElementById("resetBtn");
+
+        const increaseBtn =
+            document.getElementById("increaseBtn");
+
+        const countLabel =
+            document.getElementById("countLabel");
+
+        let count = 0;
+
+        function updateDisplay(){
+            countLabel.textContent = count;
+        }
+
+        increaseBtn.onclick = function(){
+            count++;
+            updateDisplay();
+        };
+
+        decreaseBtn.onclick = function(){
+            count--;
+            updateDisplay();
+        };
+
+        resetBtn.onclick = function(){
+            count = 0;
+            updateDisplay();
+        };
+
+    </script>
+
+</body>
+
+</html>
+```
+
+---
+
+## 📚 Concepts Used
+
+- HTML Elements
+- CSS Flexbox
+- CSS Hover Effects
+- JavaScript Variables
+- JavaScript Functions
+- DOM Manipulation
+- Event Handling
+- Dynamic Content Updates
+
+---
+
+## 🚀 How to Run
+
+1. Copy the code into a file named `index.html`
+2. Save the file
+3. Open it in any web browser
+4. Start clicking the buttons
+
+---
+
+## 📸 Preview
+
+```text
+Mouse Click Counter
+
+        0
+
+   [-1] [Reset] [+1]
+```
+
+---
+
+## 👨‍💻 Author
+
+**D Sivamani**
+
+Learning Web Development • JavaScript • Frontend Development
+
+⭐ If you found this project useful, consider giving it a star.
